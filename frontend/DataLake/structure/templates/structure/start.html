@@ -1,0 +1,31 @@
+{% extends 'structure/layout.html' %}
+
+{% block content %}
+    
+    <div class="row p-4m-2">
+        <div class="col-12">
+            {% if sources %}
+                <div class="row p-4 bg-1 m-2">
+                    <div class="col-12">
+                        <h4>Sources :</h4>
+                        <ul>
+                            {% for source in sources %}
+                                <li>
+                                    <a href="#">{{source}}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="row p-4 m-2">
+                    <div class="col-12 text-center">
+                        <p>Algorithm running ...<br>Please stand by ^_^</p>
+                        {% load static %}
+                        <img height="120px" src="{% static 'wait.gif' %}"/>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

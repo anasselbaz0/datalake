@@ -1,0 +1,40 @@
+{% extends 'structure/layout.html' %}
+
+{% block content %}
+    <div class="row p-4 bg-1 m-2">
+        <div class="col-12">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <p>Pick the sources (*.txt) :</p>
+                <input type="file" name="sources" id="sources" multiple required>
+                <div class="text-right">
+                    <button type="submit" class="bnt btn-warning p-2 pr-4 pl-4 m-2 text-uppercase" style="border: none; border-radius: 3px; width: 200px; color: #555; font-weight: 700;">Submit</button>
+                </div>
+                
+            </form>      
+        </div>
+    </div>
+
+    {% if sources %}
+        <div class="row p-4 bg-1 m-2">
+            <div class="col-12">
+                <h4>Sources :</h4>
+                <ul>
+                    {% for source in sources %}
+                        <li>
+                            <a href="#">{{source}}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="row p-4 bg-1 m-2">
+            <div class="col-12">
+                <div class="text-right">
+                    <a href="/start"><button class="bnt btn-warning p-2 pr-4 pl-4 m-2 text-uppercase" 
+                    style="border: none; border-radius: 3px; width: 200px; color: #555; font-weight: 700;">Start</button></a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
